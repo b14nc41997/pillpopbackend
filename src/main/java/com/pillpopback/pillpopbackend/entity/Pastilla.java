@@ -1,59 +1,37 @@
 package com.pillpopback.pillpopbackend.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.Data;
+
 @Entity
+@Table(name = "pastillas")
+@Data
 public class Pastilla {
-    @Id
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column
-	private String nombre;	
-	@Column
+	@Column(name = "nombre")
+	private String nombre;
+	@Column(name = "cantidad")
 	private Integer cantidad;
-	@Column
+	@Column(name = "dosis")
 	private Integer dosis;
-	@Column
-	private Integer cantidadSobrante;
-	@Column
-	private Integer frecuenciaId;
-	@Column
-	private DateTimeFormat fechaInicio;
-	@Column
+	@Column(name = "cantidad_sobrante")
+	private Integer cantidad_sobrante;
+	@Column(name = "frecuencia_id")
+	private Integer frecuencia_id;
+	@Column(name = "fecha_inicio")
+	private DateTimeFormat fecha_inicio;
+	@Column(name = "observaciones")
 	private String observaciones;
-    @Column
-	private Integer prescripcionId;
+	@Column(name = "prescripcion_id")
+	private Integer prescripcion_id;
 
-	
-//	Getters and Setters
-	
-	public Integer getId() {return id;}
-	public void setId(Integer id) {this.id = id;}
-
-	public String getNombre() {return nombre;}
-	public void setNombre(String nombre) {this.nombre = nombre;}
-
-	public Integer getCantidad() {return cantidad;}
-	public void setCantidadd(Integer cantidad) {this.cantidad = cantidad;}
-
-	public Integer getDosis() {return dosis;}
-	public void setDosis(Integer dosis) {this.dosis = dosis;}
-
-	public Integer getCantidadSobrante() {return cantidadSobrante;}
-	public void setCantidadSobrante(Integer cantidadSobrante) {this.cantidadSobrante = cantidadSobrante;}
-
-	public Integer getFrecuenciaId() {return frecuenciaId;}
-	public void setFrecuenciaId(Integer frecuenciaId) {this.frecuenciaId = frecuenciaId;}
-
-    public DateTimeFormat getFechaInicio() {return fechaInicio;}
-	public void setFechaInicio(DateTimeFormat fechaInicio) {this.fechaInicio = fechaInicio;}
-
-	public String getObservaciones() {return observaciones;}
-	public void setObservaciones(String observaciones) {this.observaciones = observaciones;}
-
-	public Integer getPrescripcionId() {return prescripcionId;}
-	public void setPrescripcionId(Integer prescripcionId) {this.prescripcionId = prescripcionId;}
-	
 }

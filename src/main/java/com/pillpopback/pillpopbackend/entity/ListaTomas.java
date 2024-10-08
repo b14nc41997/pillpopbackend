@@ -1,50 +1,31 @@
 package com.pillpopback.pillpopbackend.entity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name = "lista_Tomas")
+@Data
 public class ListaTomas {
-    @Id
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column
-	private Integer pacienteId;
-	@Column
-	private Integer pastillaId;
-	@Column
+	@Column(name = "prescripcion_id")
+	private String prescripcion_id;
+	@Column(name = "pastilla_id")
+	private Integer pastilla_id;
+	@Column(name = "nombre")
 	private String nombre;
-	@Column
-	private DateTimeFormat fechaToma;
-	@Column
+	@Column(name = "fecha_toma")
+	private DateTimeFormat fecha_toma;
+	@Column(name = "dosis")
 	private Integer dosis;
-	@Column
+	@Column(name = "toma")
 	private Boolean toma;
-
-	
-//	Getters and Setters
-	
-	public Integer getId() {return id;}
-	public void setId(Integer id) {this.id = id;}
-
-	public Integer getPacienteId() {return pacienteId;}
-	public void setPacienteId(Integer pacienteId) {this.pacienteId = pacienteId;}
-	
-	public Integer getPastillaId() {return pastillaId;}
-	public void setPastillaId(Integer pastillaId) {this.pastillaId = pastillaId;}
-
-	public String getNombre() {return nombre;}
-	public void setNombre(String nombre) {this.nombre = nombre;}
-
-	public DateTimeFormat getFechaToma() {return fechaToma;}
-	public void setFechaToma(DateTimeFormat fechaToma) {this.fechaToma = fechaToma;}
-
-	public Integer getDosis() {return dosis;}
-	public void setDosis(Integer dosis) {this.dosis = dosis;}
-
-    public Boolean getToma() {return toma;}
-	public void setToma(Boolean toma) {this.toma = toma;}
 	
 }

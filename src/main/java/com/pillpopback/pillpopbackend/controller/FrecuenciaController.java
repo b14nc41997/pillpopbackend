@@ -1,31 +1,25 @@
 package com.pillpopback.pillpopbackend.controller;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.pillpopback.pillpopbackend.dto.FrecuenciaDTO;
+import com.pillpopback.pillpopbackend.entity.Frecuencia;
 import com.pillpopback.pillpopbackend.service.FrecuenciaService;
 
 @RestController
 @RequestMapping("/frecuencia")
-public class FrecuenciaController {
+public class FrecuenciaController{
 
-    @Autowired
-    private FrecuenciaService frecuenciaService;
+	@Autowired
+	private FrecuenciaService service;
 
-    @PostMapping("/guardar")
-    public void guardar(@RequestBody FrecuenciaDTO frecuenciaDTO) {
-        frecuenciaService.guardarFrecuencia(frecuenciaDTO);
-    }
+    @GetMapping
+	public ResponseEntity<List<Frecuencia>> read() {
+		List<Frecuencia> list = service.read();
+		return new ResponseEntity<List<Frecuencia>>(list, HttpStatus.OK);
+	}
 
-    @GetMapping("/listar")
-    public List<FrecuenciaDTO> listar() {
-        return frecuenciaService.listarFrecuenciaes();
-    }
 }

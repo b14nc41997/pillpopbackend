@@ -1,52 +1,32 @@
 package com.pillpopback.pillpopbackend.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
 
 @Entity
+@Table(name = "usuario_Paciente")
+@Data
 public class UsuarioPaciente {
-    @Id
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column
-	private Integer doctorId;
-	@Column
+	@Column(name = "doctor_id")
+	private Integer doctor_id;
+	@Column(name = "nombreCompleto")
 	private String nombreCompleto;
-	@Column
-	private Integer sexoId;
-	@Column
+	@Column(name = "sexo_id")
+	private Integer sexo_id;
+	@Column(name = "edad")
 	private Integer edad;
-	@Column
+	@Column(name = "dni")
 	private Integer dni;
-	@Column
+	@Column(name = "correoElectronico")
 	private String correoElectronico;
-    @Column
+	@Column(name = "contrasena")
 	private String contrasena;
-
-	
-//	Getters and Setters
-	
-	public Integer getId() {return id;}
-	public void setId(Integer id) {this.id = id;}
-
-	public Integer getDoctorId() {return doctorId;}
-	public void setDoctorId(Integer doctorId) {this.doctorId = doctorId;}
-
-	public String getNombreCompleto() {return nombreCompleto;}
-	public void setNombreCompleto(String nombreCompleto) {this.nombreCompleto = nombreCompleto;}
-
-	public Integer getSexoId() {return sexoId;}
-	public void setSexoId(Integer sexoId) {this.sexoId = sexoId;}
-
-	public Integer getEdad() {return edad;}
-	public void setEdad(Integer edad) {this.edad = edad;}
-
-    public Integer getDni() {return dni;}
-	public void setDni(Integer dni) {this.dni = dni;}
-
-	public String getCorreoElectronico() {return correoElectronico;}
-	public void setCorreoElectronico(String correoElectronico) {this.correoElectronico = correoElectronico;}
-
-	public String getContrasena() {return contrasena;}
-	public void setContrasena(String contrasena) {this.contrasena = contrasena;}
-	
 }

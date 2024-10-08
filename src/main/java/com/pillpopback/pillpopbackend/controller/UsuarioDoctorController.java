@@ -1,31 +1,26 @@
 package com.pillpopback.pillpopbackend.controller;
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.pillpopback.pillpopbackend.dto.UsuarioDoctorDTO;
+import com.pillpopback.pillpopbackend.entity.UsuarioDoctor;
 import com.pillpopback.pillpopbackend.service.UsuarioDoctorService;
 
 @RestController
 @RequestMapping("/usuarioDoctor")
 public class UsuarioDoctorController {
 
-    @Autowired
-    private UsuarioDoctorService usuarioDoctorService;
+	@Autowired
+	private UsuarioDoctorService service;
 
-    @PostMapping("/guardar")
-    public void guardar(@RequestBody UsuarioDoctorDTO usuarioDoctorDTO) {
-        usuarioDoctorService.guardarUsuarioDoctor(usuarioDoctorDTO);
-    }
+	@PostMapping
+	public ResponseEntity<UsuarioDoctor> create(@Validated @RequestBody UsuarioDoctor usuarioDoctor) {
+		UsuarioDoctor usuarioDoctorSave = service.create(usuarioDoctor);
+		return new ResponseEntity<UsuarioDoctor>(usuarioDoctorSave, HttpStatus.CREATED);
+	}
 
-    @GetMapping("/listar")
-    public List<UsuarioDoctorDTO> listar() {
-        return usuarioDoctorService.listarUsuarioDoctores();
-    }
 }

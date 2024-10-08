@@ -1,35 +1,24 @@
 package com.pillpopback.pillpopbackend.entity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name = "prescripciones")
+@Data
 public class Prescripcion {
-    @Id
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column
-	private Integer pacienteId;
-	@Column
+	@Column(name = "paciente_id")
+	private Integer paciente_id;
+	@Column(name = "diagnostico")
 	private String diagnostico;
-	@Column
+	@Column(name = "fecha")
 	private DateTimeFormat fecha;
-
-	
-//	Getters and Setters
-	
-	public Integer getId() {return id;}
-	public void setId(Integer id) {this.id = id;}
-
-	public Integer getPacienteId() {return pacienteId;}
-	public void setPacienteId(Integer pacienteId) {this.pacienteId = pacienteId;}
-
-	public String getDiagnostico() {return diagnostico;}
-	public void setDiagnostico(String diagnostico) {this.diagnostico = diagnostico;}
-
-	public DateTimeFormat getFecha() {return fecha;}
-	public void setFecha(DateTimeFormat fecha) {this.fecha = fecha;}
-	
 }
